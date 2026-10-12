@@ -5,7 +5,7 @@ test.describe('[AE-01] Productos: listado, búsqueda, detalle y filtros (UI) @pr
     await productsPage.open();
   });
 
-  test('PRD-01: Ver el listado de productos', async ({ productsPage }) => {
+  test('PRD-01: Ver el listado de productos', {tag: '@smoke'}, async ({ productsPage }) => {
     await test.step('Verificar titulo "All products"', async () => {
       //Verificar titulo "All products".
       await expect(productsPage.allProductsTitle).toBeVisible();
@@ -28,7 +28,7 @@ test.describe('[AE-01] Productos: listado, búsqueda, detalle y filtros (UI) @pr
     });
   });
 
-  test('PRD-02: Buscar un producto existente', async ({ productsPage }) => {
+  test('PRD-02: Buscar un producto existente', {tag: '@smoke'}, async ({ productsPage }) => {
     await test.step('Buscar un producto existente "dress"', async () => {
       //Buscar un producto existente "dress".
       await productsPage.searchProduct('dress');
