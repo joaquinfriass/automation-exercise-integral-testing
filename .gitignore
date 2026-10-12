@@ -1,16 +1,16 @@
-
-# Playwright
+# Dependencias
 node_modules/
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
-/playwright/.auth/
 
-node_modules/
+# Resultados de Playwright
 test-results/
 playwright-report/
+blob-report/
+playwright/.cache/
+
+# Sesión guardada (storageState)
 .auth/
+
+# Variables de entorno reales (solo se versiona .env.example)
 .env
 .env.*
 !.env.example
