@@ -1,4 +1,4 @@
-import { Page, Locator, expect } from '@playwright/test';
+import { Page, Locator } from '@playwright/test';
 
 export abstract class BasePage {
   protected readonly page: Page;
@@ -9,18 +9,17 @@ export abstract class BasePage {
   }
 
   // Navegación
- 
- 
- //Ruta de la página (subclases deben definirla).
- protected abstract readonly path: string;
 
- //Abre la página usando su propia ruta
+  //Ruta de la página (subclases deben definirla).
+  protected abstract readonly path: string;
+
+  //Abre la página usando su propia ruta
   async open(): Promise<void> {
     await this.goto(this.path);
   }
 
- // Navega a una ruta (por defecto la raíz "/").
- async goto(path: string = '/'): Promise<void> {
+  // Navega a una ruta (por defecto la raíz "/").
+  async goto(path: string = '/'): Promise<void> {
     await this.page.goto(path);
   }
 
@@ -46,17 +45,5 @@ export abstract class BasePage {
   // Devuelve el texto del elemento, sin espacios sobrantes (o '' si es null).
   protected async getText(locator: Locator): Promise<string> {
     return (await locator.textContent())?.trim() ?? '';
-  }
-
-  // Validaciones comunes
-
-  // Aserción: la URL actual debe contener el fragmento indicado (vía regex).
-  async expectUrlContains(fragment: string): Promise<void> {
-    await expect(this.page).toHaveURL(new RegExp(fragment));
-  }
-
-  // Aserción: el elemento debe estar visible.
-  async expectVisible(locator: Locator): Promise<void> {
-    await expect(locator).toBeVisible();
   }
 }

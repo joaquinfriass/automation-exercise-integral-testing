@@ -3,7 +3,7 @@ import { BasePage } from './BasePage';
 
 export class ProductsPage extends BasePage {
   protected readonly path: string = '/products';
-  
+
   constructor(page: Page) {
     super(page);
   }

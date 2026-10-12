@@ -8,12 +8,12 @@ test.describe('[AE-01] Productos: listado, búsqueda, detalle y filtros (UI) @pr
   test('PRD-01: Ver el listado de productos', async ({ productsPage }) => {
     await test.step('Verificar titulo "All products"', async () => {
       //Verificar titulo "All products".
-      await productsPage.expectVisible(productsPage.allProductsTitle);
+      await expect(productsPage.allProductsTitle).toBeVisible();
     });
 
     await test.step('Verificar que hay al menos un producto', async () => {
       //Hay al menos un producto en el listado.
-      await productsPage.expectVisible(productsPage.firstProductCard);
+      await expect(productsPage.firstProductCard).toBeVisible();
     });
 
     await test.step('Verificar que cada tarjeta muestra nombre y precio', async () => {
@@ -22,8 +22,8 @@ test.describe('[AE-01] Productos: listado, búsqueda, detalle y filtros (UI) @pr
       expect(cardsCount).toBeGreaterThan(0);
       for (let i = 0; i < cardsCount; i++) {
         const card = productsPage.productCards.nth(i);
-        await productsPage.expectVisible(productsPage.productName(card));
-        await productsPage.expectVisible(productsPage.productPrice(card));
+        await expect(productsPage.productName(card)).toBeVisible();
+        await expect(productsPage.productPrice(card)).toBeVisible();
       }
     });
   });
@@ -36,14 +36,12 @@ test.describe('[AE-01] Productos: listado, búsqueda, detalle y filtros (UI) @pr
 
     await test.step('Verificar titulo "Searched Products"', async () => {
       //Titulo "Searched Products".
-      await productsPage.expectVisible(productsPage.searchedProductsTitle);
+      await expect(productsPage.searchedProductsTitle).toBeVisible();
     });
 
     await test.step('Verificar que hay al menos un producto', async () => {
       // Al menos un producto en el listado.
-      await productsPage.expectVisible(productsPage.firstProductCard);
+      await expect(productsPage.firstProductCard).toBeVisible();
     });
   });
-
 });
-
