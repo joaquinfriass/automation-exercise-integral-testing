@@ -13,12 +13,10 @@ export class ProductsPage extends BasePage {
     name: 'Searched Products',
   });
   readonly searchInput: Locator = this.page.getByRole('textbox', { name: 'Search Product' });
-  readonly searchButton: Locator = this.page
-    .getByRole('button')
-    .and(this.page.locator('#submit_search'));
+  readonly searchButton: Locator = this.page.locator('#submit_search');
 
   // Todas las tarjetas de producto del listado.
-  readonly productCards: Locator = this.page.locator('.product-image-wrapper');
+  readonly productCards: Locator = this.page.locator('.features_items .product-image-wrapper');
   // Solo la primera (para chequeos puntuales, ej. "hay al menos un producto").
   readonly firstProductCard: Locator = this.productCards.first();
 
