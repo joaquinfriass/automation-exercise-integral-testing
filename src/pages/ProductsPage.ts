@@ -35,5 +35,8 @@ export class ProductsPage extends BasePage {
     await this.searchButton.click();
   }
 
-  
+  // Nombres de todos los productos listados actualmente.
+  async getAllProductNames(): Promise<string[]> {
+    return this.productName(this.productCards).allTextContents();
+  }
 }

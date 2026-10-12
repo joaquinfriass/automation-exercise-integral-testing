@@ -15,4 +15,9 @@ export abstract class BasePage {
   async open(): Promise<void> {
     await this.page.goto(this.path);
   }
+
+  // Captura de pantalla de la página completa (ej. para adjuntar en un reporte al fallar).
+  async screenshot(): Promise<Buffer> {
+    return this.page.screenshot({ fullPage: true });
+  }
 }
