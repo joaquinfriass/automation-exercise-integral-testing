@@ -12,7 +12,7 @@ function required(name: string): string {
 
 export const env = {
   baseUrl: required('BASE_URL'),
-  apiUrl: required('API_URL').replace(/\/?$/, '/'),   // fuerza una barra final
+  apiUrl: required('API_URL').replace(/\/?$/, '/'), // fuerza una barra final
   userEmail: process.env.USER_EMAIL ?? '',
   userPassword: process.env.USER_PASSWORD ?? '',
 };
