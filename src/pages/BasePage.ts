@@ -1,9 +1,6 @@
-// pages/BasePage.ts
 import { Page, Locator, expect } from '@playwright/test';
 
-// Clase abstracta: no se instancia directamente, solo se extiende (ej. ProductsPage).
 export abstract class BasePage {
-  // Guarda la página de Playwright para que los métodos de abajo la usen.
   protected readonly page: Page;
 
   // El constructor recibe la "page" y la guarda; toda subclase debe pasarla.
@@ -12,9 +9,18 @@ export abstract class BasePage {
   }
 
   // Navegación
+ 
+ 
+ //Ruta de la página (subclases deben definirla).
+ protected abstract readonly path: string;
 
-  // Navega a una ruta (por defecto la raíz "/").
-  async goto(path: string = '/'): Promise<void> {
+ //Abre la página usando su propia ruta
+  async open(): Promise<void> {
+    await this.goto(this.path);
+  }
+
+ // Navega a una ruta (por defecto la raíz "/").
+ async goto(path: string = '/'): Promise<void> {
     await this.page.goto(path);
   }
 

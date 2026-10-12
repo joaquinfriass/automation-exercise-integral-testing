@@ -2,7 +2,7 @@ import { test, expect } from '@fixtures';
 
 test.describe('[AE-01] Productos: listado, búsqueda, detalle y filtros (UI) @products', () => {
   test.beforeEach(async ({ productsPage }) => {
-    await productsPage.goto('/products');
+    await productsPage.open();
   });
 
   test('PRD-01: Ver el listado de productos', async ({ productsPage }) => {
@@ -44,6 +44,6 @@ test.describe('[AE-01] Productos: listado, búsqueda, detalle y filtros (UI) @pr
       await productsPage.expectVisible(productsPage.firstProductCard);
     });
   });
-  
+
 });
 
