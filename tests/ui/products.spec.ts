@@ -44,11 +44,6 @@ test.describe('[AE-01] Productos: listado, búsqueda, detalle y filtros (UI) @pr
       await productsPage.expectVisible(productsPage.firstProductCard);
     });
   });
-
-  test.skip('PRD-03: cambio de prueba, para verificar Jira y GitHub', async ({}) => {});
-  test.skip('PRD-04:', async ({}) => {});
-  test.skip('PRD-05:', async ({}) => {});
-  test.skip('PRD-06:', async ({}) => {});
-  test.skip('PRD-07:', async ({}) => {});
+  
 });
 
