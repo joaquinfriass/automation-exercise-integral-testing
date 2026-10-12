@@ -33,7 +33,7 @@ export class ProductsPage extends BasePage {
 
   // ProductsPage.ts
   async searchProduct(text: string): Promise<void> {
-    await this.fill(this.searchInput, text);
-    await this.click(this.searchButton);
+    await this.searchInput.fill(text);
+    await this.searchButton.click();
   }
 }
