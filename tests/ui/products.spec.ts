@@ -39,9 +39,36 @@ test.describe('[AE-01] Productos: listado, búsqueda, detalle y filtros (UI) @pr
       await expect(productsPage.searchedProductsTitle).toBeVisible();
     });
 
-    await test.step('Verificar que hay al menos un producto', async () => {
+    await test.step('Verificar que el primer resultado contenga la palabra "dress"', async () => {
       // Al menos un producto en el listado.
       await expect(productsPage.firstProductCard).toBeVisible();
+      //Verificar que el primer resultado contenga la palabra "dress".
+      await expect(productsPage.productName(productsPage.firstProductCard)).toContainText(/dress/i);
+    });
+  });
+
+  test('PRD-02b: Todos los resultados contienen el término buscado', { tag: '@regression', annotation: { type: 'issue' , description: 'QE-58' } }, async ({ productsPage }) => {
+    test.fail(true, 'Falla porque el listado de productos no contiene todos los resultados con el término buscado');
+    await test.step('Buscar un producto existente "dress"', async () => {
+      //Buscar un producto existente "dress".
+      await productsPage.searchProduct('dress');
+    });
+
+    await test.step('Verificar titulo "Searched Products"', async () => {
+      //Titulo "Searched Products".
+      await expect(productsPage.searchedProductsTitle).toBeVisible();
+    });
+
+    await test.step('Verificar que los resultados contienen la palabra "dress"', async () => {
+      // Al menos un producto en el listado.
+      await expect(productsPage.firstProductCard).toBeVisible();
+      //Verificar que los nombres de los productos contienen la palabra "dress".
+      const cardsCount = await productsPage.productCards.count();
+      for (let i = 0; i < cardsCount; i++) {
+        const card = productsPage.productCards.nth(i);
+        await expect(productsPage.productName(card)).toContainText(/dress/i);
+      }
+
     });
   });
 });

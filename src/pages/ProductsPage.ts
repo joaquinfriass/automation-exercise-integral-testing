@@ -34,4 +34,6 @@ export class ProductsPage extends BasePage {
     await this.searchInput.fill(text);
     await this.searchButton.click();
   }
+
+  
 }
