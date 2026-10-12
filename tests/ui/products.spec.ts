@@ -51,3 +51,4 @@ test.describe('[AE-01] Productos: listado, búsqueda, detalle y filtros (UI) @pr
   test.skip('PRD-06:', async ({}) => {});
   test.skip('PRD-07:', async ({}) => {});
 });
+
