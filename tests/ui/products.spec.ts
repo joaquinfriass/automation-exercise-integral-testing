@@ -113,4 +113,25 @@ test.describe('[AE-01] Productos: listado, búsqueda, detalle y filtros (UI) @pr
       });
     },
   );
+
+  test(
+    'PRD-04: La búsqueda no distingue mayúsculas',
+    { tag: '@regression' },
+    async ({ productsPage }) => {
+      let upperCaseCount = 0;
+
+      await test.step('Buscar "DRESS" y guardar la cantidad de resultados', async () => {
+        await productsPage.searchProduct('DRESS');
+        await productsPage.waitForSearchResults('DRESS');
+        upperCaseCount = await productsPage.productCards.count();
+        expect(upperCaseCount).toBeGreaterThan(0);
+      });
+
+      await test.step('Buscar "dress" y comprobar la misma cantidad', async () => {
+        await productsPage.searchProduct('dress');
+        await productsPage.waitForSearchResults('dress');
+        await expect(productsPage.productCards).toHaveCount(upperCaseCount);
+      });
+    },
+  );
 });
