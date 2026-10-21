@@ -92,4 +92,25 @@ test.describe('[AE-01] Productos: listado, búsqueda, detalle y filtros (UI) @pr
       });
     },
   );
+
+  test(
+    'PRD-03: Buscar un producto inexistente',
+    { tag: '@regression' },
+    async ({ productsPage }) => {
+      await test.step('Buscar un producto inexistente "nonexistentproduct"', async () => {
+        //Buscar un producto inexistente.
+        await productsPage.searchProduct('zzzz-no-existe');
+      });
+
+      await test.step('Verificar mensaje "Searched Products"', async () => {
+        //Mensaje "Searched Products".
+        await expect(productsPage.searchedProductsTitle).toBeVisible();
+      });
+
+      await test.step('La búsqueda no devuelve resultados', async () => {
+        //La búsqueda no devuelve resultados.
+        await expect(productsPage.productCards).toHaveCount(0);
+      });
+    },
+  );
 });
