@@ -39,4 +39,9 @@ export class ProductsPage extends BasePage {
   async getAllProductNames(): Promise<string[]> {
     return this.productName(this.productCards).allTextContents();
   }
+
+  // Espera a que la URL tenga ?search=<término> exacto (distingue mayúsculas).
+  async waitForSearchResults(term: string): Promise<void> {
+    await this.page.waitForURL((url) => url.searchParams.get('search') === term);
+  }
 }
